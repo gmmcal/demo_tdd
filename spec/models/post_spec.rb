@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   it { expect(subject).to validate_presence_of(:name) }
-  it { expect(subject).to validate_presence_of(:description) }
-  it { expect(subject).to belong_to(:writer) }
+  it { expect(subject).to validate_presence_of(:content) }
+  it { expect(subject).to belong_to(:author) }
   it { expect(subject).to have_and_belong_to_many(:categories) }
 
   it 'has a valid factory' do
@@ -16,10 +16,10 @@ RSpec.describe Post, type: :model do
       post.valid?
       expect(post.errors[:name]).to include("can't be blank")
     end
-    it 'without a description' do
-      post = build(:post, description: nil)
+    it 'without a content' do
+      post = build(:post, content: nil)
       post.valid?
-      expect(post.errors[:description]).to include("can't be blank")
+      expect(post.errors[:content]).to include("can't be blank")
     end
   end
 
