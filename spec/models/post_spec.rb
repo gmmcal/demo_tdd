@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   it { expect(subject).to validate_presence_of(:name) }
   it { expect(subject).to validate_presence_of(:description) }
+  it { expect(subject).to belong_to(:writer) }
 
   it 'has a valid factory' do
     expect(build(:post)).to be_valid
