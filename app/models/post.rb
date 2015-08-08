@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
-  belongs_to :writer
+  belongs_to :author
   has_and_belongs_to_many :categories
 
   validates :name, presence: true
-  validates :description, presence: true
+  validates :content, presence: true
 end
